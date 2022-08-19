@@ -20,8 +20,8 @@ var server = http.createServer(function(req, res) {
     
   }
   const items = req.url.split('/')
-  if (items.length > 2) {
-      const index = items[items.length - 1]
+  const index = items[items.length - 1]
+  if (items.length > 2 && req.url === `/pets/${index}`) {
       console.log(index)
       fs.readFile('./pets.json', 'utf-8', (err, data) => {
           const petsData = data;
